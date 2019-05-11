@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Security.Permissions;
 
 namespace CsvChecker
 {
@@ -82,15 +85,43 @@ namespace CsvChecker
 			return list.ToArray();
 		}
 
-		public static bool TryParseLines1(string[] lines, out char separator, out int columnCount, out string errorMessage)
-		{
-			separator = ',';
-			columnCount = 9;
-			errorMessage = "";
-			return true;
-		}
+
 		public static bool TryParseLines(string[] lines, out char separator, out int columnCount, out string errorMessage)
 		{
+			errorMessage = String.Empty;
+			var separatorCounts = new Dictionary<char, int>();
+
+			foreach (string line in lines)
+			{
+				var lineInfo = new LineInfo(line);
+				if (lineInfo.IsValid)
+				{
+					if (separatorCounts.ContainsKey(lineInfo.ChosenSeparator))
+					{
+						separatorCounts[lineInfo.ChosenSeparator] += lineInfo.ChosenSeparatorCount;
+					}
+					else
+					{
+						separatorCounts.Add(lineInfo.ChosenSeparator, lineInfo.ChosenSeparatorCount);
+					}
+				}
+			}
+
+			var keys = separatorCounts.Keys;
+			foreach (char key in keys.ToArray())
+			{
+				if (separatorCounts[key] == 0)
+				{
+					separatorCounts.Remove(key);
+				}
+				else
+				{
+					separatorCounts[key] = (separatorCounts[key] - 1) / lines.Length + 1;
+				}
+
+			}
+			return LineInfo.TryFindBestSeparator(separatorCounts, out separator, out columnCount, out errorMessage);
+
 		}
 	}
 }

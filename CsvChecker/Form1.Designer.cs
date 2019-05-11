@@ -81,7 +81,7 @@
 			// qitToolStripMenuItem
 			// 
 			this.qitToolStripMenuItem.Name = "qitToolStripMenuItem";
-			this.qitToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+			this.qitToolStripMenuItem.Size = new System.Drawing.Size(160, 38);
 			this.qitToolStripMenuItem.Text = "Quit";
 			this.qitToolStripMenuItem.Click += new System.EventHandler(this.qitToolStripMenuItem_Click);
 			// 
@@ -197,7 +197,7 @@
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(185, 25);
 			this.label3.TabIndex = 12;
-			this.label3.Text = "Column Seperator";
+			this.label3.Text = "Column Separator";
 			// 
 			// textBoxSeparator
 			// 
