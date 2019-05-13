@@ -1,6 +1,6 @@
 ﻿namespace CsvChecker
 {
-	partial class Form1
+	partial class CsvCheckerForm
 	{
 		/// <summary>
 		/// Required designer variable.

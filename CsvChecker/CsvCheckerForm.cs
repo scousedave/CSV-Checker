@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
 namespace CsvChecker
 {
-	public partial class Form1 : Form
+	public partial class CsvCheckerForm : Form
 	{
 		private static string _filePath;
 		private const char _delimiter = ',';
@@ -16,7 +17,7 @@ namespace CsvChecker
 		private int _errorCount;
 		private long _lineCount;
 
-		public Form1()
+		public CsvCheckerForm()
 		{
 			InitializeComponent();
 		}
@@ -29,7 +30,7 @@ namespace CsvChecker
 
 		private void aboutCSVCheckerToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			string message = "Copyright 2019 by David Lawson";
+			string message = $"Copyright © 2019 by David Lawson {Environment.NewLine}Released under the MIT License ";
 			string title = "Csv Checker Copyright Information";
 			MessageBox.Show(message, title);
 		}
@@ -44,10 +45,17 @@ namespace CsvChecker
 					textBoxOutput.Clear();
 					_error = false;
 					_errorCount = 0;
+					Cursor.Current = Cursors.WaitCursor;
+
+					var sw = new Stopwatch();
+					sw.Start();
 					processLines(_filePath, columns, separator);
+					sw.Stop();
+					Cursor.Current = Cursors.Default;
+
 					if (!_error)
 					{
-						MessageBox.Show($"Processed {_lineCount} lines without error. File good to go!", "No errors found");
+						MessageBox.Show($"Processed {_lineCount} lines without error.{Environment.NewLine} Processing took {sw.ElapsedMilliseconds / 1000} seconds {Environment.NewLine}File good to go!", "No errors found");
 					}
 					else
 					{

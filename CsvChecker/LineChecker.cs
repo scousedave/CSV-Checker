@@ -1,10 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace CsvChecker
 {
 	public static class LineChecker
 	{
+		private static uint lowerCharRange = 32;
+		private static uint higherCharRange = 126;
+
+		static LineChecker()
+		{
+			if (ConfigurationManager.AppSettings["LowerCharRange"] != null)
+			{
+				if (uint.TryParse(ConfigurationManager.AppSettings["LowerCharRange"], out uint result))
+				{
+					lowerCharRange = result;
+				}
+			}
+			if (ConfigurationManager.AppSettings["HigherCharRange"] != null)
+			{
+				if (uint.TryParse(ConfigurationManager.AppSettings["HigherCharRange"], out uint result))
+				{
+					higherCharRange = result;
+				}
+			}
+		}
 		public static bool CheckString(string line, out string[] errors)
 		{
 			var list = new List<string>();
