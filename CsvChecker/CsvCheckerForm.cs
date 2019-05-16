@@ -30,7 +30,7 @@ namespace CsvChecker
 
 		private void aboutCSVCheckerToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			string message = $"Copyright © 2019 by David Lawson {Environment.NewLine}Released under the MIT License ";
+			string message = $"Copyright © 2019 by David Lawson {Environment.NewLine}Released under the MIT License  {Environment.NewLine}Version 1.0.0";
 			string title = "Csv Checker Copyright Information";
 			MessageBox.Show(message, title);
 		}

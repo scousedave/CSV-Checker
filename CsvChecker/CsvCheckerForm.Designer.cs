@@ -129,6 +129,9 @@
 			// 
 			// textBoxfilePath
 			// 
+			this.textBoxfilePath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBoxfilePath.Location = new System.Drawing.Point(211, 90);
 			this.textBoxfilePath.Name = "textBoxfilePath";
 			this.textBoxfilePath.ReadOnly = true;
@@ -165,6 +168,9 @@
 			// 
 			// textBoxOutput
 			// 
+			this.textBoxOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBoxOutput.Location = new System.Drawing.Point(211, 384);
 			this.textBoxOutput.Multiline = true;
 			this.textBoxOutput.Name = "textBoxOutput";
@@ -207,10 +213,11 @@
 			this.textBoxSeparator.TabIndex = 13;
 			this.textBoxSeparator.Text = ",";
 			// 
-			// Form1
+			// CsvCheckerForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScroll = true;
 			this.ClientSize = new System.Drawing.Size(1275, 940);
 			this.Controls.Add(this.textBoxSeparator);
 			this.Controls.Add(this.label3);
@@ -226,7 +233,8 @@
 			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.menuStrip2);
 			this.MainMenuStrip = this.menuStrip1;
-			this.Name = "Form1";
+			this.Name = "CsvCheckerForm";
+			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
 			this.Text = "CSV Checker";
 			this.menuStrip2.ResumeLayout(false);
 			this.menuStrip2.PerformLayout();
